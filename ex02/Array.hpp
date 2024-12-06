@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:00:06 by tecker            #+#    #+#             */
-/*   Updated: 2024/12/06 15:37:40 by tomecker         ###   ########.fr       */
+/*   Updated: 2024/12/06 19:25:21 by tecker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,15 @@ class Array
 			}
 			return (*this);
 		}
+		const T &operator[](uint index) const
+		{
+			if (index >= _size)
+				throw std::out_of_range("index is out of bounds!");
+			return (arr[index]);
+		}
 		T &operator[](uint index)
 		{
-			if (index < 0 || index > _size - 1)
+			if (index >= _size)
 				throw std::out_of_range("index is out of bounds!");
 			return (arr[index]);
 		}
@@ -63,7 +69,7 @@ class Array
 		{
 			delete[] arr;
 		}
-		uint size(void)
+		uint size(void) const
 		{
 			return (_size);
 		}
