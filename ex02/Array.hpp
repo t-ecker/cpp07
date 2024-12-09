@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tecker <tecker@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:00:06 by tecker            #+#    #+#             */
-/*   Updated: 2024/12/06 19:25:21 by tecker           ###   ########.fr       */
+/*   Updated: 2024/12/09 21:12:49 by tomecker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ class Array
 		Array(uint n)
 			: _size(n)
 		{
+			if (n > 1000000)
+       			 throw std::out_of_range("Requested array size is too large.");
 			arr = new T[_size]();
 		}
 		Array(const Array &src)
